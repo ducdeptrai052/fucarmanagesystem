@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="700" prefWidth="1100" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fucarrentingsystem.ui.controller.AdminMainController">
+
+    <top>
+        <VBox>
+            <StackPane prefHeight="80.0" style="-fx-background-color: #2E7D32;">
+                <Label fx:id="lblHeader" textFill="WHITE">
+                    <font>
+                        <Font size="28.0" />
+                    </font>
+                </Label>
+            </StackPane>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <!-- Dashboard -->
+            <Tab text="Dashboard">
+                <BorderPane>
+                    <center>
+                        <PieChart fx:id="pieStatusChart" prefHeight="400" prefWidth="400" />
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- Car Management -->
+            <Tab text="Manage Car">
+                <BorderPane>
+                    <center>
+                        <TableView fx:id="tblCars">
+                            <columns>
+                                <TableColumn fx:id="colCarId" prefWidth="60" text="ID" />
+                                <TableColumn fx:id="colCarName" prefWidth="160" text="Name" />
+                                <TableColumn fx:id="colCarColor" prefWidth="100" text="Color" />
+                                <TableColumn fx:id="colCarPrice" prefWidth="120" text="Rent Price" />
+                                <TableColumn fx:id="colCarStatus" prefWidth="100" text="Status" />
+                            </columns>
+                        </TableView>
+                    </center>
+                    <right>
+                        <AnchorPane prefWidth="300">
+                            <children>
+                                <VBox spacing="12" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+                                    <Label text="Car Name:" />
+                                    <TextField fx:id="txtCarName" />
+
+                                    <Label text="Model Year:" />
+                                    <TextField fx:id="txtCarModelYear" />
+
+                                    <Label text="Color:" />
+                                    <TextField fx:id="txtCarColor" />
+
+                                    <Label text="Capacity:" />
+                                    <TextField fx:id="txtCarCapacity" />
+
+                                    <Label text="Description:" />
+                                    <TextField fx:id="txtCarDescription" />
+
+                                    <Label text="Rent Price:" />
+                                    <TextField fx:id="txtCarRentPrice" />
+
+                                    <Label text="Producer:" />
+                                    <ComboBox fx:id="cbCarProducer" />
+
+                                    <Label text="Status:" />
+                                    <ComboBox fx:id="cbCarStatus" />
+
+                                    <HBox spacing="10">
+                                        <Button onAction="#handleCarNew" prefWidth="80" text="New" />
+                                        <Button onAction="#handleCarSave" prefWidth="80" text="Save" />
+                                        <Button onAction="#handleCarDelete" prefWidth="80" text="Delete" />
+                                    </HBox>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </right>
+
+                </BorderPane>
+            </Tab>
+
+            <!-- Customer Management -->
+            <Tab text="Manage Customer">
+                <BorderPane>
+                    <center>
+                        <TableView fx:id="tblCustomers">
+                            <columns>
+                                <TableColumn fx:id="colCustomerId" prefWidth="60" text="ID" />
+                                <TableColumn fx:id="colCustomerName" prefWidth="200" text="Name" />
+                                <TableColumn fx:id="colCustomerMobile" prefWidth="120" text="Mobile" />
+                            </columns>
+                        </TableView>
+                    </center>
+                    <right>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="20" left="20" right="20" top="20" />
+                            </padding>
+                            <Label text="Name:" />
+                            <TextField fx:id="txtCustomerName" />
+
+                            <Label text="Mobile:" />
+                            <TextField fx:id="txtCustomerMobile" />
+
+                            <Label text="Birthday:" />
+                            <DatePicker fx:id="dpCustomerBirthday" />
+
+                            <Label text="Identity Card:" />
+                            <TextField fx:id="txtCustomerIdentityCard" />
+
+                            <Label text="Licence Number:" />
+                            <TextField fx:id="txtCustomerLicenceNumber" />
+
+                            <Label text="Licence Date:" />
+                            <DatePicker fx:id="dpCustomerLicenceDate" />
+
+                            <Label text="Email:" />
+                            <TextField fx:id="txtCustomerEmail" />
+
+                            <Label text="Password:" />
+                            <PasswordField fx:id="txtCustomerPassword" />
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+      
+                                  <Button maxWidth="Infinity" onAction="#handleCustomerNew" text="New" />
+                                  <Button maxWidth="Infinity" onAction="#handleCustomerSave" text="Save" />
+                                  <Button maxWidth="Infinity" onAction="#handleCustomerDelete" text="Delete" />
+                        </children></HBox>
+                        </VBox>
+                    </right>
+                </BorderPane>
+            </Tab>
+
+            <!-- Rental Management -->
+            <Tab text="Manage Rental">
+                <BorderPane>
+                    <center>
+                        <TableView fx:id="tblRentals">
+                            <columns>
+                                <TableColumn fx:id="colRentalId" prefWidth="60" text="ID" />
+                                <TableColumn fx:id="colRentalCustomer" prefWidth="150" text="Customer" />
+                                <TableColumn fx:id="colRentalCar" prefWidth="150" text="Car" />
+                                <TableColumn fx:id="colPickupDate" prefWidth="100" text="Pickup" />
+                                <TableColumn fx:id="colReturnDate" prefWidth="100" text="Return" />
+                                <TableColumn fx:id="colRentPrice" prefWidth="100" text="Price" />
+                                <TableColumn fx:id="colRentalStatus" prefWidth="100" text="Status" />
+                            </columns>
+                        </TableView>
+                    </center>
+                    <right>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="20" left="20" right="20" top="20" />
+                            </padding>
+
+                            <Label text="Customer:" />
+                            <ComboBox fx:id="cbRentalCustomer" />
+
+                            <Label text="Car:" />
+                            <ComboBox fx:id="cbRentalCar" />
+
+                            <Label text="Pickup Date:" />
+                            <DatePicker fx:id="dpPickupDate" />
+
+                            <Label text="Return Date:" />
+                            <DatePicker fx:id="dpReturnDate" />
+
+                            <Label text="Rent Price:" />
+                            <TextField fx:id="txtRentalPrice" />
+
+                            <Label text="Status:" />
+                            <ComboBox fx:id="cbRentalStatus" />
+
+                            <Button maxWidth="Infinity" onAction="#handleRentalNew" text="New" />
+                            <Button maxWidth="Infinity" onAction="#handleRentalSave" text="Save" />
+                            <Button maxWidth="Infinity" onAction="#handleRentalDelete" text="Delete" />
+                        </VBox>
+                    </right>
+                </BorderPane>
+            </Tab>
+
+            <!-- Report -->
+            <Tab text="Report">
+                <BorderPane>
+                    <top>
+                        <HBox spacing="10">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10" />
+                            </padding>
+                            <Label text="Start Date:" />
+                            <DatePicker fx:id="dpReportStart" />
+                            <Label text="End Date:" />
+                            <DatePicker fx:id="dpReportEnd" />
+                            <Button onAction="#handleGenerateReport" text="Generate" />
+                        </HBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="tblReport">
+                            <columns>
+                                <TableColumn fx:id="colReportRentalId" prefWidth="60" text="ID" />
+                                <TableColumn fx:id="colReportCustomer" prefWidth="150" text="Customer" />
+                                <TableColumn fx:id="colReportCar" prefWidth="150" text="Car" />
+                                <TableColumn fx:id="colReportPickup" prefWidth="100" text="Pickup" />
+                                <TableColumn fx:id="colReportReturn" prefWidth="100" text="Return" />
+                                <TableColumn fx:id="colReportPrice" prefWidth="100" text="Price" />
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+            </padding>
+            <Button onAction="#handleLogout" style="-fx-background-color: #E53935; -fx-text-fill: white;" text="Logout" />
+        </HBox>
+    </bottom>
+</BorderPane>
